@@ -5,5 +5,8 @@ function love.conf(t)
 	t.window.title="picolove"
 	t.window.width=580
 	t.window.height=540
-	t.window.resizable=true
+ t.window.resizable=true
+ 
+ -- Enable fullscreen (boolean)
+ t.window.fullscreen = true         
 end

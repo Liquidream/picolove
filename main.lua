@@ -156,9 +156,12 @@ function love.resize(w, h)
 	love.graphics.clear()
 	-- adjust stuff to fit the screen
 	scale=math.max(math.min(w/pico8.resolution[1], h/pico8.resolution[2]), 1)
-	if not mobile then
-		scale=math.floor(scale)
-	end
+	--if not mobile then
+  scale=math.floor(scale)
+ -- else
+ --  -- (PN) fudge for better size (but clips)
+ --  scale=math.floor(scale)+1
+	--end
 	xpadding=(w-pico8.resolution[1]*scale)/2
 	ypadding=(h-pico8.resolution[2]*scale)/2
 	tobase=math.min(w, h)/9
@@ -344,8 +347,9 @@ vec4 effect(vec4 color, Image texture, vec2 texture_coords, vec2 screen_coords) 
 	cart=require("cart")
 	gif=require("gif")
 
-	-- load the cart
-	_load(argv[1] or 'nocart.p8')
+ -- load the cart
+ _load(argv[1] or 'lowmemsky-love.p8')
+	--_load(argv[1] or 'nocart.p8')
 end
 
 local function inside(x, y, x0, y0, w, h)
